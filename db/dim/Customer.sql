@@ -1,0 +1,46 @@
+CREATE TABLE [dim].[Customer]
+(
+  [customer_key]                BIGINT IDENTITY (1, 1) NOT NULL,
+  [email]                       NVARCHAR(500)          NOT NULL,
+  [first_name]                  NVARCHAR(500)          NULL,
+  [last_name]                   NVARCHAR(500)          NULL,
+  [job_title_key]               BIGINT                 NOT NULL,
+  [company_name]                NVARCHAR(500)          NULL,
+  [country]                     NVARCHAR(500)          NULL,
+  [position]                    NVARCHAR(500)          NULL,
+  [subscription_option]         NVARCHAR(500)          NULL,
+  [internal_code]               NVARCHAR(500)          NULL,
+  [customer_phone_number]       NVARCHAR(500)          NULL,
+  [site_subscriber_status]      NVARCHAR(500)          NULL,
+  [geographies]                 NVARCHAR(500)          NULL,
+  [member_rating]               NVARCHAR(500)          NULL,
+  [optin_time]                  NVARCHAR(500)          NULL,
+  [optin_ip]                    NVARCHAR(500)          NULL,
+  [confirm_time]                NVARCHAR(500)          NULL,
+  [confirm_ip]                  NVARCHAR(500)          NULL,
+  [latitude]                    NVARCHAR(500)          NULL,
+  [longitude]                   NVARCHAR(500)          NULL,
+  [gmtoff]                      NVARCHAR(500)          NULL,
+  [dstoff]                      NVARCHAR(500)          NULL,
+  [timezone]                    NVARCHAR(500)          NULL,
+  [cc]                          NVARCHAR(500)          NULL,
+  [region]                      NVARCHAR(500)          NULL,
+  [last_changed]                NVARCHAR(500)          NULL,
+  [leid]                        NVARCHAR(500)          NULL,
+  [euid]                        NVARCHAR(500)          NULL,
+  [notes]                       NVARCHAR(500)          NULL,
+  [tags]                        NVARCHAR(500)          NULL,
+
+  [area_of_activity]            NVARCHAR(500)          NULL,
+  [primary_market_of_operation] NVARCHAR(500)          NULL,
+  [company_revenue]             NVARCHAR(500)          NULL,
+
+
+  [ChangeHash]                  BINARY(64)             NOT NULL,
+  [CreatedJobKey]               INT                    NOT NULL,
+  [UpdatedJobKey]               INT                    NOT NULL,
+
+  CONSTRAINT [customer_key] PRIMARY KEY CLUSTERED ([customer_key] ASC),
+  FOREIGN KEY ([job_title_key]) REFERENCES dim.JobTitle ([job_title_key]),
+  CONSTRAINT [FK_JobTitle_job_title_key] FOREIGN KEY ([job_title_key]) REFERENCES [dim].[JobTitle] ([job_title_key])
+);
